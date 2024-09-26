@@ -39,7 +39,7 @@ export const sideNavItems = [
   },
   {
     icon: FaUserGroup,
-    text: "Sunny's first team",
+    text: "Amayra's first team",
     additionalIcon: GrFormNext,
     additionalIconClass: "text-gray-400 text-xl",
   },
