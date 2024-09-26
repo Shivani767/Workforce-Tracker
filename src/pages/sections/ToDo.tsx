@@ -9,7 +9,7 @@ import { RiContactsLine } from "react-icons/ri";
 
 const ToDo = () => {
   const { tasks, handleOpenForm, handleEditTask } = useTasks();
-  console.log(tasks, "sandhya");
+  console.log(tasks, "Shivani");
   return (
     <div className="flex flex-col gap-2  rounded-lg ">
       <div className="flex gap-2 items-center justify-between ">
@@ -36,7 +36,7 @@ const ToDo = () => {
           <CardContent className="space-y-2 p-2">
             <div className="flex gap-2">
               <p className="rounded-full text-black text-xs px-3 py-0.5 items-center justify-center flex bg-orange-400">
-                Medium
+                NormaI
               </p>
               <p className="rounded-full text-black text-xs px-3 py-0.5 items-center justify-center flex bg-yellow-400">
                 At risk
