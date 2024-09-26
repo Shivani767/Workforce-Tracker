@@ -16,7 +16,7 @@ const SectionHeader = () => {
     <div className="flex flex-col gap-2 pt-2 sectionheader">
       <div className="flex items-center justify-between px-4">
         <div className="flex items-center justify-start cursor-pointer">
-          <p className="text-lg text-white">Track work request</p>
+          <p className="text-lg text-white">Workforce Tracker request</p>
           <RiArrowDropDownLine className="text-gray-400" size={34} />
           <CiStar className="text-gray-400" size={20} />
         </div>
