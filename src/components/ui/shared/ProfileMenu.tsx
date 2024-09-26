@@ -20,7 +20,7 @@ export function ProfileMenu() {
       <DropdownMenuTrigger asChild>
         <div className="gap-1 cursor-pointer flex">
           <div className="rounded-full cursor-pointer bg-blue-400 h-8 w-8 items-center flex text-black justify-center">
-            SK
+            SH
           </div>
           <RiArrowDropDownLine size={30} />
         </div>
@@ -68,7 +68,7 @@ export function ProfileMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuItem>GitHub</DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
-        <DropdownMenuItem disabled>Sandhya</DropdownMenuItem>
+        <DropdownMenuItem disabled>Shivani</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           Log out
