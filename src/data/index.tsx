@@ -23,9 +23,9 @@ interface DoingDataEntry {
 }
 
 export const todoData: TodoDataEntry[] = [
-  { id: 2, icon1: <CiCircleCheck />, icon2: <RiContactsLine />, text: "Fix responsiveness", date:"11-17 jul" },
-  { id: 3, icon1: <GiSandsOfTime /> ,icon2: <RiContactsLine />, text: "Client call", date:"2-24 jul" },
-  { id: 4, icon1: <CiCircleCheck /> ,icon2: <RiContactsLine />, text: "Prepare report", date:"11-1 4 jul" },
+  { id: 2, icon1: <CiCircleCheck />, icon2: <RiContactsLine />, text: "Fix responsiveness", date:"1-20 Sept" },
+  { id: 3, icon1: <GiSandsOfTime /> ,icon2: <RiContactsLine />, text: "Client call", date:"12-24 Sept" },
+  { id: 4, icon1: <CiCircleCheck /> ,icon2: <RiContactsLine />, text: "Prepare report", date:"11-14 Sept" },
 ];
 
 export const DoingData: DoingDataEntry[] = [
@@ -33,9 +33,9 @@ export const DoingData: DoingDataEntry[] = [
     id: 1,
     icon1: <CiCircleCheck />,
     icon2: <RiContactsLine />,
-    text: "Share timeline with teammates",
+    text: "Check Optimization ",
     button1text: "High",
     button2text: "Off track",
-    date: "26 June - 12 Jul",
+    date: "16 Sept - 12 Oct",
   },
 ];
