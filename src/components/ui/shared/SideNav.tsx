@@ -107,7 +107,7 @@ const SideNav: React.FC<SideNavProps> = ({ isCollapsed }) => {
           }
         >
           <FaSquare className="text-blue-400" size={iconSize} />
-          {!isCollapsed && "Tract work requests"}
+          {!isCollapsed && "Workforce Tracker request"}
         </NavLink>
         <span className="cursor-pointer flex px-4 items-center justify-between">
           <p>{!isCollapsed && "Teams"}</p>
