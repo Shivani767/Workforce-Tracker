@@ -124,7 +124,7 @@ const SideNav: React.FC<SideNavProps> = ({ isCollapsed }) => {
                 } cursor-pointer flex w-full items-center justify-between `
               }
             >
-              Sunny's first team
+              Amayra's first team
               <GrFormNext className="text-gray-400 text-xl" />
             </NavLink>
           </span>
