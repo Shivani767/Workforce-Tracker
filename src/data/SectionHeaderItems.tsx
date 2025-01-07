@@ -27,6 +27,7 @@ export const sectionHeaderItems: SectionHeaderItem[] = [
   },
   { icon: <FaTimeline />, text: "Timeline", link: "/page/timeline" },
   { icon: <TbLayoutDashboard />, text: "Dashboard", link: "/page/dashboard" },
+  { icon: <TbLayoutDashboard />, text: "Dashboard (External)", link: "https://workforce-tracker21.vercel.app/" },
   { icon: <SlCalender />, text: "Calender", link: "/page/calender" },
   { icon: <TbClipboardText />, text: "Overview", link: "/page/overview" },
   { icon: <RiFlowChart />, text: "Workflow", link: "/page/workflow" },
