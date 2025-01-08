@@ -1,5 +1,5 @@
 import React from "react";
-import { Bar } from "react-chartjs-2"; // Assuming you have chart.js installed
+import { Bar } from "react-chartjs-2";
 import "./Dashboard.css";
 
 const Dashboard: React.FC = () => {
@@ -20,18 +20,26 @@ const Dashboard: React.FC = () => {
   const barChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Monthly Revenue Chart",
+      },
+    },
   };
 
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <h1>Dashboard</h1>
-        <p>Welcome to your dashboard! Manage your tasks and workflows here.</p>
+        <h1>Interactive Dashboard</h1>
+        <p>Manage tasks, workflows, and view analytics all in one place.</p>
       </header>
 
       <main className="dashboard-main">
-        {/* Using Flexbox for layout */}
-        <div className="dashboard-flex">
+        <div className="dashboard-grid">
           {/* Overview Section */}
           <div className="dashboard-box overview-box">
             <h2>Overview</h2>
@@ -83,7 +91,7 @@ const Dashboard: React.FC = () => {
             <h2>Embedded Tableau Dashboard</h2>
             <iframe
               title="Tableau Dashboard"
-              src="https://public.tableau.com/views/AmazonsBusinessAnalysisinIndia/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+              src="https://public.tableau.com/views/AmazonsBusinessAnalysisinIndia/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link"
               width="100%"
               height="400px"
               style={{ border: "none" }}
