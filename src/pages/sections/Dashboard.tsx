@@ -1,9 +1,25 @@
 import React from "react";
+import { Bar } from "react-chartjs-2"; // Assuming you have chart.js installed
 import "./Dashboard.css";
 
 const Dashboard: React.FC = () => {
-  const handleTaskClick = (task: string) => {
-    alert(`Task selected: ${task}`);
+  // Data for the charts
+  const barChartData = {
+    labels: ["January", "February", "March", "April", "May", "June"],
+    datasets: [
+      {
+        label: "Revenue ($)",
+        data: [5000, 8000, 6000, 9000, 12000, 15000],
+        backgroundColor: "rgba(75, 192, 192, 0.6)",
+        borderColor: "rgba(75, 192, 192, 1)",
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const barChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
   };
 
   return (
@@ -14,7 +30,8 @@ const Dashboard: React.FC = () => {
       </header>
 
       <main className="dashboard-main">
-        <div className="dashboard-grid">
+        {/* Using Flexbox for layout */}
+        <div className="dashboard-flex">
           {/* Overview Section */}
           <div className="dashboard-box overview-box">
             <h2>Overview</h2>
@@ -29,11 +46,7 @@ const Dashboard: React.FC = () => {
             <ul>
               {["Complete Design Mockups", "Review Codebase", "Update Documentation"].map((task, index) => (
                 <li key={index}>
-                  <button
-                    className="task-button"
-                    onClick={() => handleTaskClick(task)}
-                    title={`Click to view details for "${task}"`}
-                  >
+                  <button className="task-button" onClick={() => alert(`Task selected: ${task}`)}>
                     {task}
                   </button>
                 </li>
@@ -60,9 +73,21 @@ const Dashboard: React.FC = () => {
           {/* Charts Section */}
           <div className="dashboard-box charts-box">
             <h2>Charts</h2>
-            <div className="chart-placeholder">
-              <p>[Interactive Chart Coming Soon]</p>
+            <div className="chart-container">
+              <Bar data={barChartData} options={barChartOptions} />
             </div>
+          </div>
+
+          {/* Tableau Dashboard Section */}
+          <div className="dashboard-box tableau-box">
+            <h2>Embedded Tableau Dashboard</h2>
+            <iframe
+              title="Tableau Dashboard"
+              src="https://public.tableau.com/views/AmazonsBusinessAnalysisinIndia/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+              width="100%"
+              height="400px"
+              style={{ border: "none" }}
+            ></iframe>
           </div>
         </div>
       </main>
@@ -71,4 +96,3 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
-
