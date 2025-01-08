@@ -1,95 +1,193 @@
- import React from "react";
-import { Bar } from "react-chartjs-2";
-import "./Dashboard.css";
+import React from "react";
+import { HiDotsVertical } from "react-icons/hi";
+import { FaPlus } from "react-icons/fa6";
+import { useTasks } from "@/context/AppContext";
+import { Card, CardContent } from "../../components/ui/card";
+import { CiCircleCheck } from "react-icons/ci";
+import { RiContactsLine } from "react-icons/ri";
 
 const Dashboard: React.FC = () => {
-  // Data for the charts
-  const barChartData = {
-    labels: ["January", "February", "March", "April", "May", "June"],
-    datasets: [
-      {
-        label: "Revenue ($)",
-        data: [5000, 8000, 6000, 9000, 12000, 15000],
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const barChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: true,
-        text: "Monthly Revenue Chart",
-      },
-    },
-  };
+  const { tasks, handleOpenForm, handleEditTask } = useTasks();
 
   return (
-    <div className="dashboard-container">
-      <header className="dashboard-header">
-        <h1>Interactive Dashboard</h1>
-        <p>Manage tasks, workflows, and view analytics all in one place.</p>
-      </header>
+    <div className="flex flex-col gap-6 rounded-lg">
+      {/* Header Section */}
+      <div className="flex gap-2 items-center justify-between">
+        <div className="flex gap-2 items-center">
+          <p className="text-white text-xl cursor-pointer" onClick={handleOpenForm}>
+            Dashboard
+          </p>
+          <p className="text-gray-400">{tasks.length}</p>
+        </div>
+        <div className="flex gap-4 text-white">
+          <FaPlus className="cursor-pointer" onClick={handleOpenForm} />
+          <HiDotsVertical />
+        </div>
+      </div>
 
-      <main className="dashboard-main">
-        <div className="dashboard-grid">
-          {/* Overview Section */}
-          <div className="dashboard-box overview-box">
-            <h2>Overview</h2>
-            <p>📈 <strong>Project Progress:</strong> 75%</p>
-            <p>✅ <strong>Tasks Completed:</strong> 120</p>
-            <p>⏳ <strong>Upcoming Deadlines:</strong> 5</p>
-          </div>
-
-          {/* Tasks Section */}
-          <div className="dashboard-box tasks-box">
-            <h2>Tasks</h2>
-            <ul>
-              {["Complete Design Mockups", "Review Codebase", "Update Documentation"].map((task, index) => (
-                <li key={index}>
-                  <button className="task-button" onClick={() => alert(`Task selected: ${task}`)}>
-                    {task}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Reports Section */}
-          <div className="dashboard-box reports-box">
-            <h2>Reports</h2>
-            <ul>
-              {["Weekly Performance Report", "Monthly Revenue Analysis", "Yearly Goal Tracking"].map(
-                (report, index) => (
-                  <li key={index}>
-                    <a href={`#${report.toLowerCase().replace(/ /g, "-")}`} title={`View ${report}`}>
-                      {report}
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
-
-          {/* Charts Section */}
-          <div className="dashboard-box charts-box">
-            <h2>Charts</h2>
-            <div className="chart-container">
-              <Bar data={barChartData} options={barChartOptions} />
+      {/* Task Sections */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* In Progress */}
+        <div className="flex flex-col gap-2 rounded-lg">
+          <div className="flex gap-2 items-center justify-between">
+            <div className="flex gap-2 items-center">
+              <p className="text-white text-lg cursor-pointer" onClick={handleOpenForm}>
+                In Progress
+              </p>
+              <p className="text-gray-400">
+                {tasks.filter((task) => task.status === "in-progress").length}
+              </p>
+            </div>
+            <div className="flex gap-4 text-white">
+              <FaPlus className="cursor-pointer" onClick={handleOpenForm} />
+              <HiDotsVertical />
             </div>
           </div>
+          {tasks
+            .filter((task) => task.status === "in-progress")
+            .map((task, index) => (
+              <Card
+                key={index}
+                className="section border-zinc-700 rounded-lg p-2 cursor-pointer hover:border-zinc-500 transition"
+                onClick={() => handleEditTask(task.id)}
+              >
+                <CardContent className="flex items-center p-2 gap-2">
+                  <CiCircleCheck size={20} />
+                  <p className="text-lg">{task.title}</p>
+                </CardContent>
+                <CardContent className="space-y-2 p-2">
+                  <p className="text-base text-white">{task.description}</p>
+                  <div className="flex items-center justify-start gap-4 text-gray-400">
+                    <RiContactsLine size={20} />
+                    <p>{task.date}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          <div
+            className={`${
+              tasks.filter((task) => task.status === "in-progress").length > 0
+                ? ""
+                : "section"
+            } rounded-lg h-full`}
+          >
+            <p
+              className="text-center font-semibold text-gray-400 p-4 cursor-pointer"
+              onClick={handleOpenForm}
+            >
+              + Add task
+            </p>
+          </div>
         </div>
-      </main>
+
+        {/* On Hold */}
+        <div className="flex flex-col gap-2 rounded-lg">
+          <div className="flex gap-2 items-center justify-between">
+            <div className="flex gap-2 items-center">
+              <p className="text-white text-lg cursor-pointer" onClick={handleOpenForm}>
+                On Hold
+              </p>
+              <p className="text-gray-400">
+                {tasks.filter((task) => task.status === "hold").length}
+              </p>
+            </div>
+            <div className="flex gap-4 text-white">
+              <FaPlus className="cursor-pointer" onClick={handleOpenForm} />
+              <HiDotsVertical />
+            </div>
+          </div>
+          {tasks
+            .filter((task) => task.status === "hold")
+            .map((task, index) => (
+              <Card
+                key={index}
+                className="section border-zinc-700 rounded-lg p-2 cursor-pointer hover:border-zinc-500 transition"
+                onClick={() => handleEditTask(task.id)}
+              >
+                <CardContent className="flex items-center p-2 gap-2">
+                  <CiCircleCheck size={20} />
+                  <p className="text-lg">{task.title}</p>
+                </CardContent>
+                <CardContent className="space-y-2 p-2">
+                  <p className="text-base text-white">{task.description}</p>
+                  <div className="flex items-center justify-start gap-4 text-gray-400">
+                    <RiContactsLine size={20} />
+                    <p>{task.date}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          <div
+            className={`${
+              tasks.filter((task) => task.status === "hold").length > 0
+                ? ""
+                : "section"
+            } rounded-lg h-full`}
+          >
+            <p
+              className="text-center font-semibold text-gray-400 p-4 cursor-pointer"
+              onClick={handleOpenForm}
+            >
+              + Add task
+            </p>
+          </div>
+        </div>
+
+        {/* Completed */}
+        <div className="flex flex-col gap-2 rounded-lg">
+          <div className="flex gap-2 items-center justify-between">
+            <div className="flex gap-2 items-center">
+              <p className="text-white text-lg cursor-pointer" onClick={handleOpenForm}>
+                Completed
+              </p>
+              <p className="text-gray-400">
+                {tasks.filter((task) => task.status === "completed").length}
+              </p>
+            </div>
+            <div className="flex gap-4 text-white">
+              <FaPlus className="cursor-pointer" onClick={handleOpenForm} />
+              <HiDotsVertical />
+            </div>
+          </div>
+          {tasks
+            .filter((task) => task.status === "completed")
+            .map((task, index) => (
+              <Card
+                key={index}
+                className="section border-zinc-700 rounded-lg p-2 cursor-pointer hover:border-zinc-500 transition"
+                onClick={() => handleEditTask(task.id)}
+              >
+                <CardContent className="flex items-center p-2 gap-2">
+                  <CiCircleCheck size={20} />
+                  <p className="text-lg">{task.title}</p>
+                </CardContent>
+                <CardContent className="space-y-2 p-2">
+                  <p className="text-base text-white">{task.description}</p>
+                  <div className="flex items-center justify-start gap-4 text-gray-400">
+                    <RiContactsLine size={20} />
+                    <p>{task.date}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          <div
+            className={`${
+              tasks.filter((task) => task.status === "completed").length > 0
+                ? ""
+                : "section"
+            } rounded-lg h-full`}
+          >
+            <p
+              className="text-center font-semibold text-gray-400 p-4 cursor-pointer"
+              onClick={handleOpenForm}
+            >
+              + Add task
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Dashboard;
-
