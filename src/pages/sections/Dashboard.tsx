@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import { Bar } from "react-chartjs-2";
 import "./Dashboard.css";
 
@@ -85,18 +85,6 @@ const Dashboard: React.FC = () => {
               <Bar data={barChartData} options={barChartOptions} />
             </div>
           </div>
-
-          {/* Tableau Dashboard Section */}
-          <div className="dashboard-box tableau-box">
-            <h2>Embedded Tableau Dashboard</h2>
-            <iframe
-              title="Tableau Dashboard"
-              src="https://public.tableau.com/views/AmazonsBusinessAnalysisinIndia/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link"
-              width="100%"
-              height="400px"
-              style={{ border: "none" }}
-            ></iframe>
-          </div>
         </div>
       </main>
     </div>
@@ -104,3 +92,4 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+
