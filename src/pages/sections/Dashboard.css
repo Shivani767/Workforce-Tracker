@@ -1,27 +1,111 @@
+/* Dashboard Container */
 .dashboard-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f7f7f7;
   padding: 20px;
 }
 
+/* Header */
 .dashboard-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.dashboard-content {
-  font-family: Arial, sans-serif;
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
 }
 
-.dashboard-sections {
+.dashboard-header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Main Grid Layout */
+.dashboard-main {
   display: flex;
-  gap: 20px;
-  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
-.dashboard-sections section {
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
-  flex: 1;
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
 }
+
+/* Dashboard Box */
+.dashboard-box {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.dashboard-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.dashboard-box p,
+.dashboard-box ul {
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Chart Container */
+.chart-container {
+  height: 300px;
+}
+
+/* Tasks Section */
+.tasks-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tasks-box li {
+  margin: 10px 0;
+}
+
+.task-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.task-button:hover {
+  background: #0056b3;
+}
+
+/* Reports Section */
+.reports-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reports-box a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.reports-box a:hover {
+  color: #0056b3;
+}
+
+/* Tableau Section */
+.tableau-box iframe {
+  border-radius: 8px;
+  width: 100%;
+  height: 400px;
+}
+
